@@ -1,6 +1,6 @@
 package org.interview.calculate.impl;
 
-import org.interview.CalculationHandler;
+import org.interview.Calculation;
 import org.interview.exception.WeightFormatException;
 import org.interview.params.PriceConst;
 
@@ -27,7 +27,7 @@ public class ThirdPriceCalService extends SecondPriceCalService {
     }
 
     static{
-        CalculationHandler.register(3, new ThirdPriceCalService());
+        Calculation.register(3, new ThirdPriceCalService());
     }
 
 }

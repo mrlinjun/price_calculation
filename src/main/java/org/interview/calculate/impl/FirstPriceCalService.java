@@ -1,9 +1,9 @@
 package org.interview.calculate.impl;
 
-import org.interview.CalculationHandler;
-import org.interview.params.PriceConst;
+import org.interview.Calculation;
 import org.interview.calculate.AbstractPriceCalService;
 import org.interview.exception.WeightNumException;
+import org.interview.params.PriceConst;
 
 import java.math.BigDecimal;
 
@@ -38,7 +38,7 @@ public class FirstPriceCalService extends AbstractPriceCalService {
     }
 
     static {
-        CalculationHandler.register(1, new FirstPriceCalService());
+        Calculation.register(1, new FirstPriceCalService());
     }
 
 }

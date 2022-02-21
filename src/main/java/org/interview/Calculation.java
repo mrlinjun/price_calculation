@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 计算器，作为所有计算需求的统一入口，由此分发给具体的计算子类
  */
-public class CalculationHandler {
+public class Calculation {
 
     /**
      * 维持题号和计算子类的映射关系

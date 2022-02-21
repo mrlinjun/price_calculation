@@ -1,6 +1,6 @@
 package org.interview.calculate.impl;
 
-import org.interview.CalculationHandler;
+import org.interview.Calculation;
 import org.interview.exception.WeightFormatException;
 
 import java.math.BigDecimal;
@@ -21,14 +21,14 @@ public class FourthPriceCalService extends ThirdPriceCalService {
     public BigDecimal calculate(String... weights) {
         super.checkWeightNum(weights);
         BigDecimal result = super.calculate(weights);
-        if (result.compareTo(new BigDecimal("100")) >= 0) {
-            result = result.subtract(new BigDecimal("10"));
+        if (result.compareTo(BigDecimal.valueOf(100)) >= 0) {
+            result = result.subtract(BigDecimal.valueOf(10));
         }
         return result;
     }
 
     static{
-        CalculationHandler.register(4, new FourthPriceCalService());
+        Calculation.register(4, new FourthPriceCalService());
     }
 
 }
