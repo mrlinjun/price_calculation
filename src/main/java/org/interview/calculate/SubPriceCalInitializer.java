@@ -1,6 +1,4 @@
-package org.interview;
-
-import org.interview.calculate.AbstractPriceCalService;
+package org.interview.calculate;
 
 import java.io.File;
 
@@ -11,14 +9,25 @@ import java.io.File;
  */
 public class SubPriceCalInitializer {
 
+    /**
+     * 包名
+     */
     private final static String PACKAGE_NAME = "org.interview.calculate.impl";
 
-    private final static File ROOT = new File(System.getProperty("user.dir") + "\\src\\main\\java\\org\\interview\\calculate\\impl");
+    /**
+     * 此路径下的所有类都会被加载
+     */
+    private final static File ROOT = new File(System.getProperty("user.dir") + File.separator +
+            "src" + File.separator +
+            "main" + File.separator +
+            "java" + File.separator +
+            "org" + File.separator +
+            "interview" + File.separator +
+            "calculate" + File.separator +
+            "impl");
 
     /**
-     * 加载
-     *
-     * @throws Exception
+     * 加载指定包下的计算子类，并触发子类的静态代码块，让子类将题号的自己的映射关系进行注册
      */
     public static void initializer() {
         File[] files = ROOT.listFiles();

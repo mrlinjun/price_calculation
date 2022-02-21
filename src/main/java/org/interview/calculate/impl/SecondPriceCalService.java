@@ -1,13 +1,16 @@
 package org.interview.calculate.impl;
 
-import org.interview.PriceCalService;
-import org.interview.PriceConst;
+import org.interview.CalculationHandler;
+import org.interview.params.PriceConst;
 import org.interview.exception.WeightFormatException;
 import org.interview.calculate.AbstractPriceCalService;
 import org.interview.exception.WeightNumException;
 
 import java.math.BigDecimal;
 
+/**
+ * 题目二计算类
+ */
 public class SecondPriceCalService extends AbstractPriceCalService {
 
     /**
@@ -19,12 +22,12 @@ public class SecondPriceCalService extends AbstractPriceCalService {
      * @throws WeightFormatException
      */
     public BigDecimal calculate(String... weights) {
+        checkWeightNum(weights);
         return new BigDecimal(weights[0]).multiply(BigDecimal.valueOf(PriceConst.APPLE_PRICE))
                 .add(new BigDecimal(weights[1]).multiply(BigDecimal.valueOf(PriceConst.STRAWBERRY_PRICE)))
                 .add(new BigDecimal(weights[2]).multiply(BigDecimal.valueOf(PriceConst.MANGO_PRICE)));
     }
 
-    @Override
     protected void checkWeightNum(String... weights) {
         if (!(weights != null && weights.length == 3)) {
             int num = weights == null ? 0 : weights.length;
@@ -33,7 +36,7 @@ public class SecondPriceCalService extends AbstractPriceCalService {
     }
 
     static{
-        PriceCalService.register(2, new SecondPriceCalService());
+        CalculationHandler.register(2, new SecondPriceCalService());
     }
 
 }

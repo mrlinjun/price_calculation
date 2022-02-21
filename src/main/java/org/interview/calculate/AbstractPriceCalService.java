@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 所有计算类的父类，使用了模板方法模式
+ */
 public abstract class AbstractPriceCalService {
 
     /**
@@ -27,6 +30,12 @@ public abstract class AbstractPriceCalService {
         }
     }
 
+    /**
+     * 各子类需要自行实现计算逻辑
+     *
+     * @param weights 水果斤数
+     * @return 返回总价
+     */
     protected abstract BigDecimal calculate(String... weights);
 
     /**
@@ -36,8 +45,13 @@ public abstract class AbstractPriceCalService {
      */
     protected abstract void checkWeightNum(String... weights);
 
+    /**
+     * 此处定义了整体的计算流程
+     *
+     * @param weights 水果斤数
+     * @return 水果总价
+     */
     public BigDecimal calculatePrice(String... weights) {
-        checkWeightNum(weights);
         verifyWeight(weights);
         return calculate(weights);
     }

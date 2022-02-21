@@ -1,12 +1,15 @@
 package org.interview.calculate.impl;
 
-import org.interview.PriceCalService;
-import org.interview.PriceConst;
+import org.interview.CalculationHandler;
+import org.interview.params.PriceConst;
 import org.interview.calculate.AbstractPriceCalService;
 import org.interview.exception.WeightNumException;
 
 import java.math.BigDecimal;
 
+/**
+ * 题目一计算类
+ */
 public class FirstPriceCalService extends AbstractPriceCalService {
 
     /**
@@ -17,11 +20,16 @@ public class FirstPriceCalService extends AbstractPriceCalService {
      * @return 返回BigDecimal类型的商品总价
      */
     public BigDecimal calculate(String... weights) {
+        checkWeightNum(weights);
         return new BigDecimal(weights[0]).multiply(BigDecimal.valueOf(PriceConst.APPLE_PRICE))
                 .add(new BigDecimal(weights[1]).multiply(BigDecimal.valueOf(PriceConst.STRAWBERRY_PRICE)));
     }
 
-    @Override
+    /**
+     * 校验入参数量，是否多输入或者少输入
+     *
+     * @param weights 水果的斤数
+     */
     protected void checkWeightNum(String... weights) throws WeightNumException {
         if (!(weights != null && weights.length == 2)) {
             int num = weights == null ? 0 : weights.length;
@@ -30,7 +38,7 @@ public class FirstPriceCalService extends AbstractPriceCalService {
     }
 
     static {
-        PriceCalService.register(1, new FirstPriceCalService());
+        CalculationHandler.register(1, new FirstPriceCalService());
     }
 
 }

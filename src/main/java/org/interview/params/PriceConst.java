@@ -1,5 +1,8 @@
-package org.interview;
+package org.interview.params;
 
+/**
+ * 存放一些常量
+ */
 public class PriceConst {
 
     /**
