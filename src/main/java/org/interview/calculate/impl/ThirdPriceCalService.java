@@ -27,7 +27,22 @@ public class ThirdPriceCalService extends SecondPriceCalService {
     }
 
     static{
-        Calculation.register(3, new ThirdPriceCalService());
+        Calculation.register(3, getInstance());
     }
+
+    public static ThirdPriceCalService getInstance() {
+        if (instance == null) {
+            synchronized (ThirdPriceCalService.class) {
+                if (instance == null) {
+                    instance = new ThirdPriceCalService();
+                }
+            }
+        }
+        return instance;
+    }
+
+    private volatile static ThirdPriceCalService instance = null;
+
+    protected ThirdPriceCalService() {}
 
 }

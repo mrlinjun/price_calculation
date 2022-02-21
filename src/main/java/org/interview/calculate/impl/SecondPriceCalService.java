@@ -36,7 +36,22 @@ public class SecondPriceCalService extends AbstractPriceCalService {
     }
 
     static{
-        Calculation.register(2, new SecondPriceCalService());
+        Calculation.register(2, getInstance());
     }
+
+    public static SecondPriceCalService getInstance() {
+        if (instance == null) {
+            synchronized (SecondPriceCalService.class) {
+                if (instance == null) {
+                    instance = new SecondPriceCalService();
+                }
+            }
+        }
+        return instance;
+    }
+
+    private volatile static SecondPriceCalService instance = null;
+
+    protected SecondPriceCalService() {}
 
 }

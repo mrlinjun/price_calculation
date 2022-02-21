@@ -28,7 +28,22 @@ public class FourthPriceCalService extends ThirdPriceCalService {
     }
 
     static{
-        Calculation.register(4, new FourthPriceCalService());
+        Calculation.register(4, getInstance());
     }
+
+    public static FourthPriceCalService getInstance() {
+        if (instance == null) {
+            synchronized (FourthPriceCalService.class) {
+                if (instance == null) {
+                    instance = new FourthPriceCalService();
+                }
+            }
+        }
+        return instance;
+    }
+
+    private volatile static FourthPriceCalService instance = null;
+
+    private FourthPriceCalService() {}
 
 }
